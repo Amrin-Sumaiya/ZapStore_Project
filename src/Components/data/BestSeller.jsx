@@ -7,12 +7,53 @@ import Bs8 from '../../assets/Bs8.jpg';
 import Bs10 from '../../assets/Bs10.jpg';
 
 const sellers = [
-  { name: 'Heater', title: 'Electronic', description: '10 years guaranteed', Price: 10000, image: Bs4, Incart: false, id: 4 },
-  { name: 'Blender', title: 'Electronic', description: '10 years guaranteed', Price: 6000, image: Bs5, Incart: false, id: 5 },
-  { name: 'Microwave', title: 'Electronic', description: '10 years guaranteed', Price: 7000, image: Bs6, Incart: false, id: 6 },
-  { name: 'Light', title: 'Electronic', description: '10 years guaranteed', Price: 700, image: Bs7, Incart: false, id: 7 },
-  { name: 'Table-Fan', title: 'Electronic', description: '10 years guaranteed', Price: 2000, image: Bs8, Incart: false, id: 8 },
-  { name: 'Hair-Dryer', title: 'Electronic', description: '10 years guaranteed', Price: 1000, image: Bs10, Incart: false, id: 9 },
+  { name: 'Heater', 
+    title: 'Electronic',
+    description: '10 years guaranteed',
+    Price: 10000, 
+    image: Bs4,
+    Incart: false, 
+    id: 4
+   },
+  { name: 'Blender',
+     title: 'Electronic', 
+     description: '10 years guaranteed',
+      Price: 6000,
+       image: Bs5,
+        Incart: false,
+         id: 5 
+        },
+  { name: 'Microwave',
+     title: 'Electronic', 
+     description: '10 years guaranteed',
+      Price: 7000, 
+      image: Bs6, 
+      Incart: false,
+       id: 6 
+      },
+  { name: 'Light',
+     title: 'Electronic', 
+     description: '10 years guaranteed',
+      Price: 700, 
+      image: Bs7, 
+      Incart: false,
+       id: 7 
+      },
+  { name: 'Table-Fan',
+     title: 'Electronic', 
+     description: '10 years guaranteed', 
+     Price: 2000,
+      image: Bs8,
+       Incart: false,
+        id: 8 
+      },
+  { name: 'Hair-Dryer', 
+    title: 'Electronic', 
+    description: '10 years guaranteed',
+     Price: 1000,
+      image: Bs10,
+       Incart: false, 
+       id: 9 },
 ];
 
 const BestSeller = ({ cart, setCart }) => {

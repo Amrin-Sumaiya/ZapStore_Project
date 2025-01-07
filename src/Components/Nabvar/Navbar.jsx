@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import logo from "../../assets/logo.png.png";
 import { FaCaretDown } from 'react-icons/fa';
 import { FaCartShopping } from 'react-icons/fa6';
 import DarkMode from './DarkMode';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext/UserContextProvider.jsx';
 
 const Menu = [
   { id: 1, name: "Home", link: "/" },
@@ -17,6 +18,19 @@ const DropdownLinks = [
 ];
 
 const Navbar = ({ cartCount }) => {
+  const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    
+  };
+
+  const handleOrderNowClick = () => {
+    navigate('/cart'); 
+  };
+
   return (
     <div className="shadow-lg bg-white dark:bg-gray-800 dark:text-white duration-200">
       <div className="container py-3 sm:py-0"></div>
@@ -38,6 +52,23 @@ const Navbar = ({ cartCount }) => {
                   </Link>
                 </li>
               ))}
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white px-4 py-4 rounded-full hover:bg-red-500 transition duration-300"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-4 rounded-full flex item-center hover:scale-110 transition duration-300"
+                  >
+                    Login
+                  </Link>
+                )}
+              </li>
               <li className="group relative cursor-pointer">
                 <a href="/#" className="flex h-[72px] items-center gap-2">
                   Quick Links
@@ -58,8 +89,8 @@ const Navbar = ({ cartCount }) => {
                 </div>
               </li>
               <li>
-                <a
-                  href="/order-now"
+                <button
+                  onClick={handleOrderNowClick}
                   className="relative bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 py-2 rounded-full flex items-center transition duration-300 hover:scale-110"
                 >
                   <div>
@@ -69,7 +100,7 @@ const Navbar = ({ cartCount }) => {
                   </div>
                   Order Now
                   <FaCartShopping className="text-xl text-white drop-shadow-sm ml-2 relative z-0" />
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -80,6 +111,7 @@ const Navbar = ({ cartCount }) => {
 };
 
 export default Navbar;
+
 
 
 
