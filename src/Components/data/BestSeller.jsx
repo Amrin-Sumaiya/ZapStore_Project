@@ -60,19 +60,24 @@ const BestSeller = ({ cart, setCart }) => {
   const [updatedSellers, setUpdatedSellers] = useState([]);
 
   useEffect(() => {
-    const storedCart = cart || [];
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     const sellersWithCartState = sellers.map((product) => ({
       ...product,
       Incart: storedCart.some((cartItem) => cartItem.id === product.id),
     }));
     setUpdatedSellers(sellersWithCartState);
   }, [cart]);
+  
 
   const addToCart = (product) => {
-    const isInCart = cart.some((item) => item.id === product.id);
-    const updatedCart = isInCart
-      ? cart.filter((item) => item.id !== product.id)
-      : [...cart, product];
+    const existingProduct = cart.find((item) => item.id === product.id);
+    const updatedCart = existingProduct
+      ? cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity || 1) + 1 }
+            : item
+        )
+      : [...cart, { ...product, quantity: 1 }];
 
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
