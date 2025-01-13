@@ -46,7 +46,7 @@ const Hero = () => {
         width: "100%",
     }
   return (
-    <div className="min-h-[550px] sm:min-h-[650px] bg-gray-100 dark:bg-gray-800 dark:text-white flex justify-center items-center"
+    <div className="min-h-[550px] sm:min-h-[650px] bg-gray-100 dark:bg-gray-800 dark:text-slate-600 flex justify-center items-center"
     style={bgImage}>
       <div className="container pb-8 sm:pb-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8"> {/* Adjusted grid layout */}
@@ -55,9 +55,9 @@ const Hero = () => {
           <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 ">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
               {title} 
-              <p className="bg-clip-text text-transparent bg-gradient-to-tr from-pink-500 to-violet-500">Electronics</p>
+              <p className="bg-clip-text text-transparent bg-gradient-to-tr from-pink-500 to-violet-500 ">Electronics</p>
             </h1>
-            <p className="text-sm mt-4">
+            <p className="text-sm mt-4 dark:text-purple-950">
                 {description}
             
             </p>

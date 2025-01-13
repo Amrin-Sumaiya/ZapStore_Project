@@ -55,7 +55,7 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
         <>
           <div className="mb-8 p-6  bg-gray-200 rounded-lg shadow-lg">
            <div className="flex justify-between mb-4">
-           <p className="text-lg font-semibold">Total Quantity: {totalQuantity}</p>
+           <p className="text-lg font-semibold dark:text-black">Total Quantity: {totalQuantity}</p>
            </div>
 
           </div>

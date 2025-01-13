@@ -23,8 +23,8 @@ const Login = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      <form onSubmit={handleLogin} className="bg-white shadow-md rounded-lg p-6 max-w-sm mx-auto">
+      <h2 className="text-center text-2xl font-bold mb-4">Login</h2>
+      <form onSubmit={handleLogin} className="bg-slate-400 shadow-md rounded-lg p-6 max-w-sm mx-auto">
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
@@ -39,7 +39,7 @@ const Login = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-black">
             Password
           </label>
           <input
@@ -47,13 +47,13 @@ const Login = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:text-black"
             required
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-500 transition duration-300"
+          className="w-full  bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-500 transition duration-300"
         >
           Login
         </button>
@@ -63,5 +63,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
