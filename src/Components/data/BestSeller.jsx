@@ -5,6 +5,8 @@ import Bs6 from '../../assets/Bs6.jpg';
 import Bs7 from '../../assets/Bs7.jpg';
 import Bs8 from '../../assets/Bs8.jpg';
 import Bs10 from '../../assets/Bs10.jpg';
+import iron from '../../assets/iron.jpg';
+import Bs11 from '../../assets/Bs11.jpg';
 
 const sellers = [
   { name: 'Heater', 
@@ -54,21 +56,37 @@ const sellers = [
       image: Bs10,
        Incart: false, 
        id: 9 },
+
+       { name: 'Electric Iron', 
+        title: 'Electronic', 
+        description: '10 years guaranteed',
+         Price: 3000,
+          image: iron,
+           Incart: false, 
+           id: 10 },
+
+           { name: 'Washing Machine', 
+            title: 'Electronic', 
+            description: '10 years guaranteed',
+             Price: 16000,
+              image: Bs11,
+               Incart: false, 
+               id: 11 },   
 ];
 
-const BestSeller = ({ cart, setCart }) => {
+const BestSeller = ({ cart, setCart, products, setProducts }) => {
   const [updatedSellers, setUpdatedSellers] = useState([]);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    const sellersWithCartState = sellers.map((product) => ({
-      ...product,
-      Incart: storedCart.some((cartItem) => cartItem.id === product.id),
-    }));
-    setUpdatedSellers(sellersWithCartState);
+    setUpdatedSellers(
+      sellers.map((product) => ({
+        ...product,
+        Incart: storedCart.some((cartItem) => cartItem.id === product.id),
+      }))
+    );
   }, [cart]);
   
-
   const addToCart = (product) => {
     const existingProduct = cart.find((item) => item.id === product.id);
     const updatedCart = existingProduct
@@ -78,14 +96,22 @@ const BestSeller = ({ cart, setCart }) => {
             : item
         )
       : [...cart, { ...product, quantity: 1 }];
-
+  
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setUpdatedSellers((prevSellers) =>
+      prevSellers.map((p) =>
+        p.id === product.id ? { ...p, Incart: true } : p
+      )
+    );
   };
+  
+  
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Best Sellers</h2>
+      <h2 className="text-4xl font-bold text-center items-center mb-4 
+    text-purple-950 dark:text-purple-200">Our Amazing Products</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {updatedSellers.map((product) => (
           <div key={product.id} className="bg-white shadow-md rounded-lg p-4">

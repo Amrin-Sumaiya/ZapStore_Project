@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = ({ cart, removeFromCart, updateCart }) => {
+     const navigate = useNavigate()
+
     const totalPrice = cart.reduce((acc, product) => acc + product.Price * (product.quantity || 1), 0);
     const totalQuantity = cart.reduce((acc, product) => acc + (product.quantity || 1), 0);
     
@@ -23,7 +26,23 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
     : product
   );
   updateCart(updatedCart)
-    }
+    };
+
+    
+
+    const handleContinueShopping = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      
+      if (user && user.email && user.password) {
+
+        updateCart([]); //clear cart and navigate
+        localStorage.removeItem('cart');
+        navigate('/continueshop'); // Proceed to the ContinueShop page
+      } else {
+        
+        navigate('/login'); // Redirect to the login page
+      }
+    };
   
     return (
       <div className="container mx-auto p-6">
@@ -80,7 +99,7 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
             ))}
             <div className="flex justify-between bg-gray-100 text-white font-semibold rounded-lg shadow-lg ">
               <p className="text-xl font-semibold text-gray-800">Total Price: ${totalPrice.toFixed(2)}</p>
-              <button className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
+              <button onClick={handleContinueShopping} className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
                 Continue Shopping
               </button>
             </div>
@@ -88,7 +107,7 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
   
-  export default CartPage;
+export default CartPage;

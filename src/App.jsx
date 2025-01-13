@@ -9,26 +9,15 @@ import BestSeller from './Components/data/BestSeller';
 import CartPage from './Components/BestProducts/CartPage';
 import Login from './Components/Nabvar/Login';
 import { UserContextProvider } from './Components/UserContext/UserContextProvider';
+import Footer from './Components/Footer/footer';
+import ContinueShop from './Components/BestProducts/ContinueShop';
+
 
 
 export const userContext = React.createContext()
 const App = () => {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
-//  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
- /*  //check login state from localstorage on mount
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    setIsLoggedIn(!!user);
-  }, []);
-  const handleLogin = (userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setIsLoggedIn(true);
-  }
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    setIsLoggedIn(false);
-  }; */
 
   const updateCart = (updatedCart) => {
     setCart(updatedCart)
@@ -72,7 +61,9 @@ const App = () => {
             {/* Cart Page - Only Cart and Navbar */}
             <Route path="/cart" element={<CartPage cart={cart}  removeFromCart={removeFromCart} updateCart={updateCart} />} />
             <Route path="/login" element={<Login />}/>
+            <Route path="/continueshop" element={<ContinueShop />} />
           </Routes>
+          <Footer />
         </Router>
       </ThemeProvider>
       </UserContextProvider>

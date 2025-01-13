@@ -14,10 +14,10 @@ const Login = () => {
     if (email && password) {
       localStorage.setItem('user', JSON.stringify({ email, password }));
       setIsLoggedIn(true); // Update context state
-     
-      navigate('/'); // Navigate to the home page
+      navigate('/cart'); // Navigate to the home page
     } else {
-      alert('Please fill in all fields.');
+      navigate('/login')
+     
     }
   };
 

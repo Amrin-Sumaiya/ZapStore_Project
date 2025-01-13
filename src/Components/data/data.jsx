@@ -4,6 +4,7 @@ import Bs7 from '../../assets/Bs7.jpg'
 import Bs8 from '../../assets/Bs8.jpg'
 import Bs10 from '../../assets/Bs10.jpg'
 import Bs6 from '../../assets/Bs6.jpg'
+import iron from '../../assets/iron.jpg'
 
 {
     "sellers" = [
@@ -58,6 +59,15 @@ import Bs6 from '../../assets/Bs6.jpg'
         description: '10 years granteed',
         Price: 1000,
         image: Bs10,
+        Incart: false,
+        id: 9
+      },
+      {
+        name: 'Washing Machine',
+        title: 'Electronic',
+        description: '10 years granteed',
+        Price: 14000,
+        image: iron,
         Incart: false,
         id: 9
       },
