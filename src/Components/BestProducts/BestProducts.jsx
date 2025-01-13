@@ -37,11 +37,11 @@ const BestProducts = () => {
         <div className="container">
             {/* header section*/}
             <div className="text-center mb-20 max-w-[400px] mx-auto ">
-                <p className="text-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-violet-900">
+                <p className="text-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-violet-900 dark:text-white">
                     Trending Products
                 </p>
                 <h1 className="text-3xl font-bold">Best Electronics</h1>
-                <p className="text-xs text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                <p className="text-xs text-gray-500 dark:text-yellow-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                    you can choose the best electronics
                      
                      </p>
@@ -51,7 +51,7 @@ const BestProducts = () => {
 
      {
         ProductsData.map((products) => (
-           <div className=" rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-500 dark:hover:bg-indigo-400 hover:text-white relative shadow-xl duration-high  group max-w-[300px]">
+           <div className=" rounded-2xl bg-white dark:bg-slate-200 hover:bg-slate-500 dark:hover:bg-indigo-400 hover:text-white relative shadow-xl duration-high  group max-w-[300px]">
             <div className="h-[100px]">
                 <img src={products.img} alt=""
                 className="  max-w-[100px] block mx-auto transform-translate-y-14 group-hover:scale-105 duration-300 shadow-md" />
@@ -67,7 +67,7 @@ const BestProducts = () => {
                    className='text-yellow-500'  />
 
                 </div>
-                <h1 className="text-xl font-bold">{products.title}</h1>
+                <h1 className="text-xl font-bold dark:text-black">{products.title}</h1>
                 <p className="text-gray-600 group-hover:text-white duration-300 text-sm line-clamp-2">{products.description}</p>
                 <button className="bg-purple-600 to-purple-900 text-white px-4 py-2 rounded-full mt-4 hover:scale-105 duration-200 group-hover:bg-white group-hover:text-purple-900
                 ">Order Now</button>
