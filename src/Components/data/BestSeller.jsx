@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import AddProductMessage from '../../common/AddProductMessage';
+import RemoveProductMessage from '../../common/RemoveProductMessage';
 import Bs4 from '../../assets/Bs4.jpg';
 import Bs5 from '../../assets/Bs5.jpg';
 import Bs6 from '../../assets/Bs6.jpg';
@@ -78,6 +81,7 @@ const BestSeller = ({ cart, setCart, products, setProducts }) => {
   const [updatedSellers, setUpdatedSellers] = useState([]);
 
   useEffect(() => {
+    
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setUpdatedSellers(
       sellers.map((product) => ({
@@ -88,15 +92,7 @@ const BestSeller = ({ cart, setCart, products, setProducts }) => {
   }, [cart]);
   
   const addToCart = (product) => {
-    const existingProduct = cart.find((item) => item.id === product.id);
-    const updatedCart = existingProduct
-      ? cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: (item.quantity || 1) + 1 }
-            : item
-        )
-      : [...cart, { ...product, quantity: 1 }];
-  
+    const updatedCart = [...cart, { ...product, quantity: 1 }];
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setUpdatedSellers((prevSellers) =>
@@ -104,6 +100,19 @@ const BestSeller = ({ cart, setCart, products, setProducts }) => {
         p.id === product.id ? { ...p, Incart: true } : p
       )
     );
+    AddProductMessage(); // Toast notification
+  };
+
+  const removeFromCart = (productId) => {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setUpdatedSellers((prevSellers) =>
+      prevSellers.map((p) =>
+        p.id === productId ? { ...p, Incart: false } : p
+      )
+    );
+    RemoveProductMessage(); // Toast notification
   };
   
   
@@ -121,14 +130,18 @@ const BestSeller = ({ cart, setCart, products, setProducts }) => {
             <p className="text-gray-700 mb-4">{product.description}</p>
             <p className="text-lg font-bold text-gray-900 mb-4">${product.Price}</p>
             <button
-              onClick={() => addToCart(product)}
+              onClick={() =>
+                product.Incart
+                  ? removeFromCart(product.id)
+                  : addToCart(product)
+              }
               className={`px-4 py-2 rounded-full w-full transition duration-300 ${
                 product.Incart
                   ? 'bg-red-600 text-white'
                   : 'bg-purple-900 text-white hover:bg-purple-700'
               }`}
             >
-              {product.Incart ? 'Remove from Cart' : 'Add to Cart'}
+              {product.Incart ? 'Remove Product' : 'Add Product'}
             </button>
           </div>
         ))}

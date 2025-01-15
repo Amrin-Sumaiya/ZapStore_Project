@@ -77,13 +77,13 @@ const Hero = () => {
             </div>
             {/*  other image list */}
 
-            <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute -bottom-[5px] lg:-right-1 bg-sky-950 rounded-full">
+            <div className="flex flex-wrap lg:flex-col lg:top-1/2 lg:-translate-y-1/2 lg:py-2 justify-center gap-4 absolute bottom-4 sm:bottom-auto sm:right-4 bg-sky-950 p-2 rounded-full overflow-x-auto lg:overflow-visible">
   {
     ImageList.map((data) => (
       <img
         key={data.id}  // Use the 'id' from ImageList as a unique key
         src={data.img}
-        className="max-w-[100px] h-[100px] object-contain inline-block hover:scale-110 duration-200"
+        className="w-[80px] h-[80px] object-contain inline-block hover:scale-110 duration-100"
         onClick={() => {
           setImageId(
             data.id === 1 ? Ec33 :
@@ -99,10 +99,12 @@ const Hero = () => {
   }
 </div>
 
+
  
           </div>
         </div>
       </div>
+ 
     </div>
   );
 }

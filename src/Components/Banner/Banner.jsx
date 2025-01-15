@@ -12,7 +12,7 @@ const Banner = () => {
             <img 
               src={innovation} 
               alt="ZapStore Banner" 
-              className="max-w-full h-[350px] w-full object-cover rounded-xl shadow-xl transform transition-transform duration-500 ease-in-out hover:scale-105"
+              className="max-w-full origin-top-right h-[350px] w-full object-cover rounded-xl shadow-xl transform transition-transform duration-500 ease-in-out hover:scale-105"
             />
           </div>
 

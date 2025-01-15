@@ -11,6 +11,9 @@ import Login from './Components/Nabvar/Login';
 import { UserContextProvider } from './Components/UserContext/UserContextProvider';
 import Footer from './Components/Footer/footer';
 import ContinueShop from './Components/BestProducts/ContinueShop';
+import { ToastContainer } from 'react-toastify';
+import BrandPromote from './Components/BrandPromote/BrandPromote';
+import MoreProduct from './Components/MoreProduct/MoreProduct';
 
 
 
@@ -35,10 +38,23 @@ const App = () => {
 
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-700 dark:text-white duration-200">
+    <div className=" dark:bg-slate-600 dark:text-white duration-200">
+
       <UserContextProvider> 
       <ThemeProvider>
         <Router>
+        <ToastContainer
+          position='bottom-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='light'
+        />
           {/* Always render Navbar, pass login state and handlers */}
           <Navbar
            cartCount={cart.length} 
@@ -51,6 +67,8 @@ const App = () => {
               <div>
                 <Hero />
                 <BestProducts />
+                <BrandPromote />
+                <MoreProduct />
                 <Banner />
               </div>
             } />

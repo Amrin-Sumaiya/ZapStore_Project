@@ -33,15 +33,15 @@ const ProductsData = [
 
 const BestProducts = () => {
   return (
-    <div className="py-10">
-        <div className="container">
+    <div className="py-10 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
+        <div className="container bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
             {/* header section*/}
             <div className="text-center mb-20 max-w-[400px] mx-auto ">
-                <p className="text-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-violet-900 dark:text-white">
+                <p className="text-bold text-1xl bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-violet-900 dark:text-purple-700">
                     Trending Products
                 </p>
-                <h1 className="text-3xl font-bold">Best Electronics</h1>
-                <p className="text-xs text-gray-500 dark:text-yellow-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                <h1 className="text-3xl font-bold dark:text-purple-950">Best Electronics</h1>
+                <p className="text-xs text-gray-500 dark:text-yellow-800">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                    you can choose the best electronics
                      
                      </p>
@@ -82,7 +82,7 @@ const BestProducts = () => {
 
             </div>
         </div>
-      
+
     </div>
   )
 }

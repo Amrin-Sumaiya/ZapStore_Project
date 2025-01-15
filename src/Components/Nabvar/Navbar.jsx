@@ -32,12 +32,12 @@ const Navbar = ({ cartCount }) => {
   };
 
   return (
-    <div className="shadow-lg bg-white dark:bg-gray-800 dark:text-white duration-200">
+    <div className="p-2 px-10 shadow-lg light:bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100  dark:bg-gray-800 dark:text-white duration-200">
       <div className="container py-3 sm:py-0"></div>
       <div className="flex justify-between items-center">
         <div>
           <a href="#" className="font-bold text-2xl sm:text-3xl flex gap-2">
-            <img src={logo} alt="" className="w-10" />
+            <img src={logo} alt="" className="w-12" />
             <span className="font-bold text-3xl sm:text-4xl">ZapStore</span>
           </a>
         </div>
@@ -56,14 +56,14 @@ const Navbar = ({ cartCount }) => {
                 {isLoggedIn ? (
                   <button
                     onClick={handleLogout}
-                    className="bg-red-600 text-white px-4 py-4 rounded-full hover:bg-red-500 transition duration-300"
+                    className="relative bg-gradient-to-r from-red-600 to-red-600 text-white px-4 py-2 rounded-full flex items-center transition duration-300 hover:scale-110"
                   >
                     Logout
                   </button>
                 ) : (
                   <Link
                     to="/login"
-                    className="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-4 py-4 rounded-full flex item-center hover:scale-110 transition duration-300"
+                    className="relative bg-gradient-to-r from-purple-600 to-purple-800 text-white px-4 py-2 rounded-full flex items-center transition duration-300 hover:scale-110"
                   >
                     Login
                   </Link>

@@ -1,5 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import SuccessMessage from '../../common/SuccessMessage';
+import RemoveProductMessage from '../../common/RemoveProductMessage';
+
 
 const CartPage = ({ cart, removeFromCart, updateCart }) => {
      const navigate = useNavigate()
@@ -28,13 +32,13 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
   updateCart(updatedCart)
     };
 
-    
 
     const handleContinueShopping = () => {
+     
       const user = JSON.parse(localStorage.getItem('user'));
       
       if (user && user.email && user.password) {
-
+        SuccessMessage() //toastify file 
         updateCart([]); //clear cart and navigate
         localStorage.removeItem('cart');
         navigate('/continueshop'); // Proceed to the ContinueShop page
@@ -43,9 +47,15 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
         navigate('/login'); // Redirect to the login page
       }
     };
-  
+
+    const handleRemoveProduct = (productId) => {
+      removeFromCart(productId);
+      RemoveProductMessage()
+    }
+   
     return (
       <div className="container mx-auto p-6">
+
       <h2 className="text-3xl font-bold text-center mb-8">Products List</h2>
       {cart.length === 0 ? (
         <div className="text-center text-xl font-semibold text-gray-700"> Product list is Empty!</div>
@@ -90,7 +100,7 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
                   </button>
                 </div>
                 <button
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() => handleRemoveProduct(product.id)}
                   className="ml-4 px-4 py-2 bg-red-600 text-white font-semibold rounded-full  hover:bg-red-500 transition duration-300"
                 >
                   Remove Product
@@ -99,9 +109,12 @@ const CartPage = ({ cart, removeFromCart, updateCart }) => {
             ))}
             <div className="flex justify-between bg-gray-100 text-white font-semibold rounded-lg shadow-lg ">
               <p className="text-xl font-semibold text-gray-800">Total Price: ${totalPrice.toFixed(2)}</p>
-              <button onClick={handleContinueShopping} className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
+             <div>
+             <button onClick={handleContinueShopping}  className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition duration-300">
                 Continue Shopping
               </button>
+            
+             </div>
             </div>
           </div>
         </>
